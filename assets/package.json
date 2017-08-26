@@ -4,6 +4,7 @@
   "scripts": {
     "deploy": "brunch build --production",
     "watch": "brunch watch --stdin",
+    "preinstall": "cd .. && mix.deps get && cd assets",
     "heroku-prebuild": "cd .. && mix.deps get && cd assets"
   },
   "dependencies": {
