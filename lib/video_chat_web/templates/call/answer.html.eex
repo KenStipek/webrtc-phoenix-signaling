@@ -1,0 +1,12 @@
+<div>
+<h1>Answer Peer</h1>
+    <p>Local Video:</p>
+  <video id="localVideo" autoplay></video>
+
+  <p>Remote Video:</p>
+  <video id="remoteVideo" autoplay></video>
+
+  <button id="connect">Connect</button>
+  <button id="hangup">Hangup</button>
+</div>
+<script src="<%= static_path(@conn, "/js/app-answer.js") %>"></script>
