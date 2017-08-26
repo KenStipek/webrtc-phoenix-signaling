@@ -9,6 +9,9 @@
     "phoenix": "file:../deps/phoenix",
     "phoenix_html": "file:../deps/phoenix_html"
   },
+  "scripts": {
+    "preinstall": "cd .. && mix.deps get && cd assets"
+  },
   "devDependencies": {
     "babel-brunch": "6.1.1",
     "brunch": "2.10.9",
