@@ -18,7 +18,7 @@ config :video_chat, VideoChatWeb.Endpoint,
   check_origin: false,
   http: [port: 80],
   url: [scheme: "https", host: "https://atm-chat.herokuapp.com", port: 443],
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  cache_static_manifest: "priv/static/cache_manifest.json",
   secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE")
 
 # Do not print debug messages in production
