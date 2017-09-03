@@ -6,8 +6,13 @@ defmodule VideoChatWeb.CallChannel do
     {:ok, socket}
   end
 
-  def handle_in("message", %{"body" => body}, socket) do
-    broadcast! socket, "message", %{body: body}
+  def handle_in("webrtc_message", %{"body" => body}, socket) do
+    broadcast! socket, "webrtc_message", %{body: body}
+    {:noreply, socket}
+  end
+
+  def handle_in("typing_message", %{"body" => body}, socket) do
+    broadcast! socket, "typing_message", %{body: body}
     {:noreply, socket}
   end
 end

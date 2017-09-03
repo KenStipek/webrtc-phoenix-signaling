@@ -17,8 +17,6 @@ defmodule VideoChatWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", CallController, :index
-    get "/offer", CallController, :offer
-    get "/answer", CallController, :answer
   end
 
   # Other scopes may use custom stacks.
