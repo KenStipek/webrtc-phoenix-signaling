@@ -3,6 +3,7 @@ defmodule VideoChatWeb.UserSocket do
 
   ## Channels
   # channel "room:*", VideoChatWeb.RoomChannel
+  channel "call:*", VideoChatWeb.CallChannel
   channel "call", VideoChatWeb.CallChannel
 
   ## Transports
@@ -21,10 +22,20 @@ defmodule VideoChatWeb.UserSocket do
   #
   # See `Phoenix.Token` documentation for examples in
   # performing token verification on connect.
-  def connect(_params, socket) do
-    IO.puts "UserSocket replied :ok"
-    {:ok, socket}
+  def connect(%{"nickname" => nickname, "token" => token}, socket) do
+    case Phoenix.Token.verify(socket, "user salt", token, max_age: 86400) do
+      {:ok, nickname} -> 
+        IO.puts "ACCEPTED"
+        {:ok, assign(socket, :nickname, nickname)}
+      {:error, _} ->
+        IO.puts "REJECTED"
+        :error
+    end
   end
+  # def connect(%{"nickname" => nickname}, socket) do
+  #   IO.puts "UserSocket replied :ok"
+  #   {:ok, assign(socket, :nickname, nickname)}
+  # end
 
   # Socket id's are topics that allow you to identify all sockets for a given user:
   #
@@ -36,5 +47,5 @@ defmodule VideoChatWeb.UserSocket do
   #     VideoChatWeb.Endpoint.broadcast("user_socket:#{user.id}", "disconnect", %{})
   #
   # Returning `nil` makes this socket anonymous.
-  def id(_socket), do: nil
+  def id(socket), do: "user_socket:#{socket.assigns.nickname}"
 end

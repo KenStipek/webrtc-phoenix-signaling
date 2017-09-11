@@ -5,11 +5,8 @@ defmodule VideoChatWeb.CallController do
     render conn, "index.html"
   end
 
-  def offer(conn, _params) do
-    render conn, "offer.html"
+  def create(conn, params) do
+    
   end
 
-  def answer(conn, _params) do
-    render conn, "answer.html"
-  end
 end

@@ -17,6 +17,13 @@ defmodule VideoChatWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", CallController, :index
+    # resources "/room", VideoChatWeb.RoomController
+  end
+
+  scope "/room", VideoChatWeb do
+    pipe_through :api
+
+    post "/", RoomController, :create
   end
 
   # Other scopes may use custom stacks.

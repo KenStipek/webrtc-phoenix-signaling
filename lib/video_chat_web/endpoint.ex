@@ -37,6 +37,9 @@ defmodule VideoChatWeb.Endpoint do
     store: :cookie,
     key: "_video_chat_key",
     signing_salt: "XY1VmrDq"
+  
+  # oma lisäys:
+  plug CORSPlug
 
   plug VideoChatWeb.Router
 

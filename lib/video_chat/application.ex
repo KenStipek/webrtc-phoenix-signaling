@@ -13,6 +13,8 @@ defmodule VideoChat.Application do
       # Start your own worker by calling: VideoChat.Worker.start_link(arg1, arg2, arg3)
       # worker(VideoChat.Worker, [arg1, arg2, arg3]),
       supervisor(VideoChatWeb.Presence, []),
+      # Start Call Status worker
+      worker(VideoChatWeb.CallStatus, [[], :first_room], [name: CallStatus])
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
