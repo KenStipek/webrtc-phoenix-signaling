@@ -32,6 +32,10 @@ defmodule VideoChatWeb.UserSocket do
         :error
     end
   end
+
+  def connect(_, socket) do
+    {:error, :no_auth}
+  end
   # def connect(%{"nickname" => nickname}, socket) do
   #   IO.puts "UserSocket replied :ok"
   #   {:ok, assign(socket, :nickname, nickname)}
