@@ -2,6 +2,7 @@ defmodule VideoChatWeb.CallChannel do
   use Phoenix.Channel
   alias VideoChatWeb.Presence
   alias VideoChatWeb.CallStatus
+  alias Integer
 
   # def join("call", _auth_msg, socket) do
   #   IO.puts "Somebody joined call channel"
@@ -20,30 +21,39 @@ defmodule VideoChatWeb.CallChannel do
     {:ok, _} = Presence.track(socket, socket.assigns.nickname, %{
       online_at: inspect(System.system_time(:seconds))
     })
-    push socket, "presence_state", Presence.list(socket)
+    # push socket, "presence_state", Presence.list(socket)
+    push socket, "SEND_OFFER", %{type: "SEND_OFFER"}
     {:noreply, socket}
   end
-
-  # defp state_parser(socket) do
-  #   case Presence.list(socket) |> map_size do
-  #     x when x == 1 ->
-  #       %{""
-  #     x when x == 2 -> 
-  #       IO.puts "map_size == 2"
-  #     _ -> 
-  #       :error_empty
-  #   end
-  # end
 
   def handle_in("webrtc_message", %{"body" => body}, socket) do
-    broadcast! socket, "webrtc_message", %{body: body}
-    {:noreply, socket}
+    IO.puts "-------------WebRTC message received----------------"
+    IO.puts "-----let's see socket.assigns-------"
+    IO.inspect socket.assigns
+    IO.puts "--------Poison parse---------"
+    IO.inspect Poison.Parser.parse!(body)
+
+    case Poison.Parser.parse!(body) do
+      %{"candidate" => _} ->
+        if socket.assigns["candidate1"] do
+          candidate_adder(socket, body, 2)
+        else 
+          {:noreply, assign(socket, "candidate1", body)}
+        end
+      %{"sdp" => %{"sdp" => _, "type" => "offer"}} -> {:noreply, assign(socket, :sdp_offer, body)}
+      _ -> IO.puts "something else from case"
+    end
   end
 
-  # def handle_in("typing_message", %{"body" => body}, socket) do
-  #   broadcast! socket, "typing_message", %{body: body}
-  #   {:noreply, socket}
-  # end
+  defp candidate_adder(socket, body, i) do
+    if Map.has_key?(socket.assigns, "candidate" <> to_string(i)) do
+      candidate_adder(socket, body, i + 1)
+    else 
+      {:noreply, assign(socket, "candidate" <> to_string(i), body)}
+    end
+  end
+
+
 
   def handle_in("typing_message", %{"message" => message}, socket) do
     # def handle_in("typing_message", message, socket) do
