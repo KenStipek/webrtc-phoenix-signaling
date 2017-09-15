@@ -40,7 +40,7 @@ check REST API routes:
 mix phx.routes
 ```
 
-## In progress: ##
+## Under development: ##
 * Maintaining peer negotiation state at GenServer and/or Phoenix Presence module
 * Creating proper fallback methods for 
 * Expanding channels and routes to a multi-channel infrastructure with automatic redirecting

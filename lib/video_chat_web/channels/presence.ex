@@ -61,7 +61,7 @@ defmodule VideoChatWeb.Presence do
           {key, %{metas: metas, user: users[key]}}
         end
       end
-
+ 
   The function above fetches all users from the database who
   have registered presences for the given topic. The fetched
   information is then extended with a `:user` key of the user's
