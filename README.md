@@ -1,35 +1,19 @@
+# Elixir based WebRTC Peer-to-peer signaling server #
+> Using Phoenix Channels
 
+## Progress ##
+The project is in progress. 
 
+## Currently working: ##
+* Single room live WebRTC P2P negotiation with 2 peers
+* Message broadcasting between clients without using WebRTC data channels _(using Phoenix Channels instead)_
+* Handling entrance and closing diffs via Phoenix Presence module
 
-<script src="<%= static_path(@conn, "/js/app.js") %>"></script>
-tämä oli app.html.eex tiedostossa
-
-
-käytä
-
-heroku auth:token
-
-siitä tulevaa salasanaa voit käyttää kun ajat
-git push heroku master
-
-
-vanha package.json
-
-{
-  "repository": {},
-  "license": "MIT",
-  "scripts": {
-    "deploy": "brunch build --production",
-    "watch": "brunch watch --stdin"
-  },
-  "dependencies": {
-    "phoenix": "file:../deps/phoenix",
-    "phoenix_html": "file:../deps/phoenix_html"
-  },
-  "devDependencies": {
-    "babel-brunch": "6.1.1",
-    "brunch": "2.10.9",
-    "clean-css-brunch": "2.10.0",
-    "uglify-js-brunch": "2.10.0"
-  }
-}
+In progress:
+* Maintaining peer negotiation state at GenServer and/or Phoenix Presence module
+* Creating proper fallback methods for 
+* Expanding channels and routes to a multi-channel infrastructure with automatic redirecting
+* Optimizing supervisor tree for more robust deployment
+* Writing proper documentation and tests
+* Redundant code cleanup & codebase improved structuring
+* _(Adding Ecto models for PostgreSQL to maintain permanent nicknames and avatars)_
