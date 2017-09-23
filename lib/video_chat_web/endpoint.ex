@@ -40,7 +40,7 @@ defmodule VideoChatWeb.Endpoint do
     signing_salt: "XY1VmrDq"
   
   # oma lisäys:
-  plug CORSPlug
+  # plug CORSPlug
 
   plug VideoChatWeb.Router
 

@@ -8,13 +8,13 @@
     <meta name="author" content="">
 
     <title>Video Chat</title>
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/main.ec4e7006.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/main.css") %>">
   </head>
 
   <body>
     <div id="root">
     </div> <!-- /container -->
     <script src="//cdn.temasys.com.sg/adapterjs/0.10.x/adapter.debug.js"></script>
-    <script src="<%= static_path(@conn, "/js/main.d016a3ec.js") %>"></script>
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>
