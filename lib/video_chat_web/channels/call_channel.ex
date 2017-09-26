@@ -4,6 +4,10 @@ defmodule VideoChatWeb.CallChannel do
   alias VideoChatWeb.CallStatus
   alias Integer
 
+  @moduledoc """
+  This is the main channel module for setting up a bidirectional WebRTC connection.
+  """
+
   # def join("call", _auth_msg, socket) do
   #   IO.puts "Somebody joined call channel"
   #   {:ok, socket}
@@ -63,7 +67,9 @@ defmodule VideoChatWeb.CallChannel do
   # end
 
 
-
+  @doc """
+  Handles the incoming type_message messages.
+  """
   def handle_in("typing_message", %{"message" => message}, socket) do
     # def handle_in("typing_message", message, socket) do
     # IO.puts "--------typing_message--------"

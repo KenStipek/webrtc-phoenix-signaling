@@ -18,6 +18,8 @@ defmodule VideoChatWeb.Endpoint do
     socket "/phoenix/live_reload/socket", Phoenix.LiveReloader.Socket
     plug Phoenix.LiveReloader
     plug Phoenix.CodeReloader
+    # lisää tähän CORS pelkästään dev modea varten
+    plug CORSPlug
   end
 
   plug Plug.RequestId

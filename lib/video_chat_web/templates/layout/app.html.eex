@@ -7,12 +7,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Video Chat</title>
+    <title>Video Chat Concept</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/main.9cc84f34.css") %>">
   </head>
 
   <body>
-    <div id="root">
+    <div id="root" class="connected">
     </div> <!-- /container -->
     <script src="//cdn.temasys.com.sg/adapterjs/0.10.x/adapter.debug.js"></script>
     <script src="<%= static_path(@conn, "/js/main.ff5b4784.js") %>"></script>
