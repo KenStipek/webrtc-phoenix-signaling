@@ -8,7 +8,7 @@
     <meta name="author" content="">
 
     <title>Video Chat Concept</title>
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/main.8ec7ea89.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/main.ece18e32.css") %>">
   </head>
 
   <body>
